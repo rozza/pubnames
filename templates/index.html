@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Most Popular Pub names in the UK</title>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/bootswatch/2.3.2/cerulean/bootstrap.min.css" rel="stylesheet">
+
+
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+	<!--[if lte IE 8]>
+	    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+	<![endif]-->
+</head>
+<body>
+	<div class="container-fluid">
+		<header class="jumbotron subhead" id="overview">
+	  	<h1>Popular Pub names!</h1>
+	  	<p>Move the map to update the wordle (UK only)</p>
+		</header>
+
+		<div class="row-fluid">
+		  <div class="span4">
+		  	<div id="map" style="width: 400px; height: 500px"></div>
+		  </div>
+		  <div class="span8">
+		  	<div id="status"></div>
+		  	<div id="wordle"></div>
+		  </div>
+		</div>
+	</div>
+
+	<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+	<script>
+		var southWest = new L.LatLng(45, -15),
+	 	northEast = new L.LatLng(66, 6),
+	 	bounds = new L.LatLngBounds(southWest, northEast);
+		var map = L.map('map', {
+			maxBounds: bounds,
+		}).setView([55, -4.3], 1);
+		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+		    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(map);
+	</script>
+	<script src="/static/d3.js"></script>
+	<script src="/static/d3.layout.cloud.js"></script>
+	<script src="/static/wordle.js"></script>
+	<script>
+		load();
+		var reloadTimer;
+		map.on("moveend", function (){
+			layout.stop();
+			window.clearTimeout(reloadTimer);
+  			reloadTimer = window.setTimeout(function(){load();}, 850);
+		});
+
+	</script>
+</body>
+</html>
