@@ -62,4 +62,4 @@ def pubs():
 
 if __name__ == "__main__":
     debug = any([x == 'debug' for x in sys.argv])
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=debug, host='0.0.0.0')
