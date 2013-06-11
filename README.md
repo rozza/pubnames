@@ -1,6 +1,11 @@
 UK Most Popular Pub Names
 =========================
 
+Run locally
+-----------
+
+Expects mongodb >= 2.4 to be running locally.
+
 1. Load the bson data:
 
    mongorestore -d demos -c pubs pubs.bson
@@ -16,3 +21,8 @@ UK Most Popular Pub Names
 4. Go to localhost:5000!
 
 	Move the map the generate a new wordle
+
+Online demo
+-----------
+
+http://pubnames.herokuapp.com/
