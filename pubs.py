@@ -1,15 +1,17 @@
 #!/usr/bin/env python
+import datetime
+import os
+import sys
 
 import flask
 import pymongo
-import sys
-import datetime
 
 from flask import request
 
 app = flask.Flask(__name__)
 
-db = pymongo.MongoClient().demo
+mongodb_uri = os.environ.get('MONGOLAB_URI', 'mongodb://localhost:27017')
+db = pymongo.MongoClient(mongodb_uri).demo
 db.pubs.ensure_index("ts")
 
 
