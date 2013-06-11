@@ -12,7 +12,7 @@ app = flask.Flask(__name__)
 
 mongodb_uri = os.environ.get('MONGOLAB_URI', 'mongodb://localhost:27017')
 db = pymongo.MongoClient(mongodb_uri).demo
-db.pubs.ensure_index("ts")
+db.pubs.ensureIndex({"location": "2dsphere"})
 
 
 @app.route("/")
