@@ -11,8 +11,8 @@ UK Most Popular Pub Names
 
 3. Run the app!
 
-	python app.py debug
+	python pubs.py debug
 
-4. Go to localhost:4000!
+4. Go to localhost:5000!
 
 	Move the map the generate a new wordle
