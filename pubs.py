@@ -26,11 +26,9 @@ def pubs():
     List all the pubs for the bounding box.
     """
     match = {}
-    print request.args
     bbox = request.args.get('bbox', None)
     try:
         bbox = [float(b) for b in bbox.split(',')]
-        print bbox
         sw = [bbox[0], bbox[1]]
         nw = [bbox[0], bbox[3]]
         ne = [bbox[2], bbox[3]]
@@ -44,7 +42,7 @@ def pubs():
                         {"$geometry":
                             {"type": "Polygon",
                              "coordinates": [[sw, nw, ne, se, sw]]}}}}
-    print match
+
     pub_names = db.pubs.aggregate([
         {"$match": match},
         {"$group":
