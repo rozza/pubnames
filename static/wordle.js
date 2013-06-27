@@ -1,6 +1,7 @@
     // Wordle options
 
     var fill = d3.scale.category20b();
+    var statusText = d3.select("#status");
 
     var w = 800,
       h = 500;
@@ -43,8 +44,9 @@
       if (tags.length) fontSize.domain([tags[tags.length - 1].size || 1, tags[0].size]);
       layout
       .stop()
-      .words(tags)
-      .start();
+      .words(tags);
+      statusText.style("display", "none");
+      layout.start();
       drawn = true;
     }
 
