@@ -25,4 +25,4 @@ Expects mongodb >= 2.4 to be running locally.
 Online demo
 -----------
 
-http://pubnames.herokuapp.com/
+http://pubnames.rosslawley.co.uk/
