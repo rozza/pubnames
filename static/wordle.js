@@ -3,8 +3,11 @@
     var fill = d3.scale.category20b();
     var statusText = d3.select("#status");
 
-    var w = 800,
-      h = 500;
+    var max_w = 800;
+    var w = parseInt(d3.select("#wordle").style("width"), 10);
+    var w = (max_w < w) ? max_w: w,
+        h = 500;
+
 
     var scale = d3.scale["log"](),
       words = [],
