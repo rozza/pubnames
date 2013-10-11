@@ -27,7 +27,7 @@ class Handler(object):
             if "name" not in doc:
                 node_points[osm_id] = (lon, lat)
                 continue
-            doc["name"] = doc["name"].title().lstrip("The ").replace("And", "&")
+            doc["name"] = doc["name"].title().lstrip("The ").replace("And", "&").replace("'", "")
             doc["_id"] = osm_id
             doc["location"] = {"type": "Point", "coordinates": [lon, lat]}
             docs.append(doc)
